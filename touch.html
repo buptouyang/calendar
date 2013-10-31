@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hellp Mobile</title>
+    <link rel="stylesheet" type="text/css" href="resources\css\sencha-touch.css">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+   <script type="text/javascript" src="sencha-touch-all-debug.js"></script>
+ 
+    <script> 
+    
+    Ext.application({  
+    name: 'Sencha',  
+  
+    launch: function() { 
+    	Ext.Viewport.add({
+    		xtype:'list',
+    
+    fullscreen: true,
+    itemTpl: '{title}',
+    data: [
+        { title: 'Item 1' },
+        { title: 'Item 2' },
+        { title: 'Item 3' },
+        { title: 'Item 4' }
+    ],
+    listeners:{
+    	itemtap:function(){
+    		//alert("点击");
+    		Ext.create('Ext.Panel',{
+    			fullscreen:true,
+    			layout:'vbox',
+    			
+    			items:[{
+    				xtype:'picker',
+    				flex:1,
+    				//width:200,
+    				toolbar:{
+    					ui:'light',
+    					title:'时'
+    				},
+    				slots:[{
+    					name:'hour',
+    					title:'hour',
+    					data:[
+    					{text:'12点',value:12},
+    					{text:'11点',value:11}]
+    				}]
+
+    			},{
+    				xtype:'picker',
+    				//width:200,
+    				flex:1,
+    				toolbar:{
+    					ui:'light',
+    					title:'分'
+    				},
+    				slots:[{
+    					name:'hour',
+    					title:'hour',
+    					data:[
+    					{text:'12分',value:12},
+    					{text:'11分',value:11}]
+    				}]
+
+    			}
+    			]
+    		}).show();
+
+    		Ext.Viewport.add({
+    				xtype:'picker',
+    				//flex:1,
+    				//width:200,
+    				toolbar:{
+    					ui:'light',
+    					title:'时'
+    				},
+    				slots:[{
+    					name:'hour',
+    					title:'hour',
+    					data:[
+    					{text:'12点',value:12},
+    					{text:'11点',value:11}]
+    				}]
+    			});
+
+    		/*Ext.create('Ext.Panel',{
+    			fullscreen:true,
+    			//layout:'vbox',
+    			
+    			items:[{
+    				xtype:'picker',
+    				//flex:1,
+    				//width:200,
+    				toolbar:{
+    					ui:'light',
+    					title:'时'
+    				},
+    				slots:[{
+    					name:'hour',
+    					title:'hour',
+    					data:[
+    					{text:'12点',value:12},
+    					{text:'11点',value:11}]
+    				}]
+
+    			},{
+    				xtype:'picker',
+    				//width:200,
+    				//flex:1,
+    				toolbar:{
+    					ui:'light',
+    					title:'分'
+    				},
+    				slots:[{
+    					name:'hour',
+    					title:'hour',
+    					data:[
+    					{text:'12分',value:12},
+    					{text:'11分',value:11}]
+    				}]
+
+    			}
+    			]
+    		}).show();*/
+    		/*this.picker = Ext.Viewport.add({
+            xtype: 'datepicker',
+*/
+            // Disable titles, done button, cancel button and make it hidden by default
+          //  useTitles: true
+          //  doneButton: false,
+           // cancelButton: false
+           // hidden: true,
+
+            // specify the toolbar configuration and give it a items config
+            
+        }
+    		/*Ext.create('Ext.field.DatePicker',{
+    			value:new Date()
+
+    		}).show();*/
+    	}
+    
+
+
+
+    });  }
+});  
+
+     </script> 
+ </head>
+<body>aaaaa</body>
+</html>
