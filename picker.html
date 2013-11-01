@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>完成时间</title>
+    <link rel="stylesheet" type="text/css" href="resources\css\sencha-touch.css">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+   <script type="text/javascript" src="sencha-touch-all-debug.js"></script>
+   <script type="text/javascript" src="DateTime.js"></script>
+ 
+    <script> 
+    
+    Ext.application({  
+    name: 'Sencha',  
+  
+    launch: function() { 
+            Ext.Viewport.add({
+                    xtype:'list',
+    
+    fullscreen: true,
+    itemTpl: '{title}',
+    data: [
+        { title: 'Item 1' },
+        { title: 'Item 2' },
+        { title: 'Item 3' },
+        { title: 'Item 4' }
+    ],
+    listeners:{
+            itemtap:function(){
+                    //alert("点击");
+                    var picker = Ext.create('Ext.ux.picker.DateTime', {
+                        useTitles: true,
+                        doneButton: '完成',
+                        cancelButton: '取消',
+                        minuteInterval : 1,
+                        ampm:true,
+                       
+                        slotOrder: ['year','month', 'day', 'hour','minute','ampm'],
+                        /*toolbar: {
+                            items : datetimepickettoolbaritems
+                        }*/
+                        
+                    });
+                    picker.setValueAnimated(new Date());
+                    Ext.Viewport.add(picker);
+                    picker.show();
+                
+                   
+
+                 
+
+                   
+            
+        }
+                    
+            }
+    
+
+
+
+    });  }
+});  
+
+     </script> 
+ </head>
+<body>aaaaa</body>
+</html>
