@@ -6,10 +6,12 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
    <script type="text/javascript" src="sencha-touch-all-debug.js"></script>
    <script type="text/javascript" src="DateTime.js"></script>
+   <script type="text/javascript" src="DateTimePicker.js"></script>
    
 </style>
   
  <script type="text/javascript">
+
 Ext.application({  
     name: 'Sencha',  
     launch: function() { 
@@ -26,20 +28,24 @@ Ext.application({
             direction: "up",
             duration: 500
         },
-            defaults:{required:true},
+            //defaults:{required:true},
             items:{
                 xtype:'button',
                 align:'center', 
                 text:'button',
                 badgeText:'2',
+                width:'300px',
+                centered:true,
                 
-handler: function() {
+               handler: function() {
                     if (!this.overlay) {
                         this.overlay = Ext.Viewport.add({
                             xtype: 'fieldset',
                             id:'overlay',
-                            modal: true,
-                            hideOnMaskTap: true,
+                            
+                            defaults:{required:true,labelWidth:'40%'},
+                           // modal: true,
+                           // hideOnMaskTap: true,
                             showAnimation: {
                                 type: 'popIn',
                                 duration: 250,
@@ -75,11 +81,23 @@ handler: function() {
                         store: {
                             data: [
                                 { times: 'once', title: '一次性活动'},
-                                { times: 'everyDay', title: '每天'},
+                                { times: 'everyDay', title: '每天'   },
                                
                             ]
                         }
-                    },
+                    },{
+                    xtype: 'datetimepickerfield',
+                    name : 'finishTime',
+                    label: '计划完成时间',
+                    value: new Date(),
+                    dateTimeFormat : 'Y-m-d H:i',
+                    picker: {
+                        yearFrom: 1980,
+                        minuteInterval : 1,
+                        ampm : false,
+                        slotOrder: ['year','month', 'day', 'hour','minute']
+                    }
+                },
                 {
                     xtype: 'textareafield',
                     name : 'note',
@@ -105,7 +123,18 @@ handler: function() {
                          },
                         //{ text: 'Default' },
                         {// ui: 'round', 
-                        text: 'Submit' ,docked:'right'}
+                        text: 'Submit' ,
+                        docked:'right',
+                        handler:function(){
+                             var myPanel = Ext.create('Ext.Panel', {
+                            html: 'This will be added to a Container'
+                                        });
+
+                            bnt.add([myPanel]);
+                            Ext.getCmp('overlay').hide();
+
+                        }
+                    }
                     ]
                 }
                                 
