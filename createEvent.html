@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>设置事件</title>
+    <link rel="stylesheet" type="text/css" href="resources\css\sencha-touch.css">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+   <script type="text/javascript" src="sencha-touch-all-debug.js"></script>
+   <script type="text/javascript" src="DateTime.js"></script>
+   
+</style>
+  
+ <script type="text/javascript">
+Ext.application({  
+    name: 'Sencha',  
+    launch: function() { 
+        var bnt=Ext.create('Ext.Container',{
+            //fullscreen: true,
+            padding:10,
+            showAnimation: {
+            type: "slideIn",
+            direction: "down",
+            duration: 500
+        },
+        hideAnimation: {
+            type: "slideOut",
+            direction: "up",
+            duration: 500
+        },
+            defaults:{required:true},
+            items:{
+                xtype:'button',
+                align:'center', 
+                text:'button',
+                badgeText:'2',
+                
+handler: function() {
+                    if (!this.overlay) {
+                        this.overlay = Ext.Viewport.add({
+                            xtype: 'fieldset',
+                            id:'overlay',
+                            modal: true,
+                            hideOnMaskTap: true,
+                            showAnimation: {
+                                type: 'popIn',
+                                duration: 250,
+                                easing: 'ease-out'
+                            },
+                            hideAnimation: {
+                                type: 'popOut',
+                                duration: 250,
+                                easing: 'ease-out'
+                            },
+                            centered: true,
+                            width: Ext.filterPlatform('ie10') ? '100%' : (Ext.os.deviceType == 'Phone') ? 260 : 400,
+                            height: Ext.filterPlatform('ie10') ? '30%' : Ext.os.deviceType == 'Phone' ? 220 : 400,
+                            
+                            items: [
+                            {
+                    xtype: 'textfield',
+                    name : 'eventName',
+                    label: '事件名称',
+                    labelCls:'label1',
+                    border:2
+                },{xtype:'spacer'},
+                {
+                        xtype: 'selectfield',
+                        name: 'repeated',
+                        label: '重复',
+                        labelCls:'label2',
+                        border:2,
+                        valueField: 'times',
+                        displayField: 'title',
+                        height:'auto',
+                        usePicker:true,
+                        store: {
+                            data: [
+                                { times: 'once', title: '一次性活动'},
+                                { times: 'everyDay', title: '每天'},
+                               
+                            ]
+                        }
+                    },
+                {
+                    xtype: 'textareafield',
+                    name : 'note',
+                    label: '备注',
+                    labelCls:'label1',
+                    border:3
+                },
+                {
+                    docked: 'top',
+                    xtype: 'toolbar',
+                    title: '设置事件'
+                },{
+                    docked: 'bottom',
+                    xtype: 'toolbar',
+                    
+                    ui:'light',
+                    items: [
+                        { ui: 'back', 
+                        text: 'Back',
+                        handler:function(){
+                            Ext.getCmp('overlay').hide();
+                        }
+                         },
+                        //{ text: 'Default' },
+                        {// ui: 'round', 
+                        text: 'Submit' ,docked:'right'}
+                    ]
+                }
+                                
+                            ],
+                            scrollable: true
+                        });
+                    }
+
+                    this.overlay.show();
+                }
+
+
+
+
+
+
+
+
+
+            }
+
+
+            
+        });
+      Ext.Viewport.add(bnt);
+}
+
+});
+    
+
+     </script> 
+ </head>
+<body>aaaaa</body>
+</html>
